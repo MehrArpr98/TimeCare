@@ -25,7 +25,7 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
             <div class="col-span-1 flex items-center justify-center" :class="{'order-last' : tab === 'login'}">             
-                <img src="assets/login2.jpg" />              
+                <img src="../../public/assets/login2.jpg" />              
             </div>
 
             <div class="col-span-1">
