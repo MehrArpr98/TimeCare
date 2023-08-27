@@ -1,5 +1,5 @@
 <template>
-  <main v-if="userLoggedIn" class="container mx-auto py-2 px-4">
+  <main v-if="userLoggedIn" class="container mx-auto px-4 my-5 py-5 mx-auto max-w-6xl">
     <!-- Add new task button -->
     <button
       class="fixed bottom-2 right-2 block z-50 font-2xl text-white border-4 border-white rounded-full bg-emerald-500 w-16 h-16 hover:bg-emerald-600 hover:w-20 hover:h-20 ease-all duration-300"
@@ -9,7 +9,7 @@
     </button>
 
     <!-- Searchbox and options -->
-    <div class="border-b flex justify-between max-w-6xl mx-auto my-5 py-5">
+    <div class="border-b flex justify-between pb-5">
       <div class="bg-zinc-100 h-10 max-w-sm w-1/2 flex items-center rounded-full border">
         <a id="search-box-icon" class="text-md my-1 pl-3"><i class="fa fa-search"></i></a>
         <input
@@ -47,9 +47,7 @@
     />
 
     <!-- Tasks container -->
-    <div
-      class="grid-container grid gap-5 max-w-6xl mx-auto my-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-    >
+    <div class="grid-container grid gap-5 my-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       <div
         id="bg-div"
         :class="{
@@ -73,22 +71,22 @@
       </div>
     </div>
   </main>
-  <main v-else class="container mx-auto py-2 px-4">
-<div class="border-b flex justify-between max-w-6xl mx-auto my-5 py-5">
-
-</div>
+  <main v-else class="container mx-auto px-4 mt-5 pt-5 mx-auto max-w-6xl">
+   
+    <Introducing />
   </main>
 </template>
 
 <script>
 import NewTaskModal from '../components/NewTaskModal.vue'
+import Introducing from '../components/Introducing.vue'
 import { auth, tasksCollection } from '@/includes/firebase'
 import Task from '../components/Task.vue'
 import useUserStore from '@/stores/user'
 import { mapState } from 'pinia'
 
 export default {
-  components: { NewTaskModal, Task },
+  components: { NewTaskModal, Task, Introducing },
   data() {
     return {
       tasks: [],
@@ -100,8 +98,7 @@ export default {
     }
   },
   async created() {
-    if(!auth.currentUser)
-    return
+    if (!auth.currentUser) return
     const snapshot = await tasksCollection.where('uid', '==', auth.currentUser.uid).get()
 
     snapshot.forEach((document) => {
@@ -140,7 +137,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(useUserStore,['userLoggedIn']),
+    ...mapState(useUserStore, ['userLoggedIn']),
     filteredTasks() {
       let temp = [...this.tasks]
 
@@ -171,11 +168,11 @@ export default {
 
 <style>
 .grid-container {
-  grid-auto-rows: 50px; 
+  grid-auto-rows: 50px;
 }
 
 .short {
-  grid-row: span 3; 
+  grid-row: span 3;
 }
 
 .tall {
@@ -189,5 +186,4 @@ export default {
 .tallest {
   grid-row: span 6;
 }
-
 </style>

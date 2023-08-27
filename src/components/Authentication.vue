@@ -29,7 +29,7 @@
             </div>
 
             <div class="col-span-1">
-              <h1 class="text-emerald-600 bold text-3xl text-center" style="font-family: cursive;">Kaaraat</h1>
+              <img src="../../public/timecare.png" class="h-10 mx-auto"/>
               <app-login :tab="tab" @updateTab="tab = 'register'" v-if="tab === 'login'" />
               <app-register :tab="tab" @updateTab="tab = 'login'" v-else />
             </div>

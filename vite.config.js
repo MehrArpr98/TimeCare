@@ -26,7 +26,7 @@ export default defineConfig({
       external: 'NonExistingPath'
     }
   },
-  
+  base: '/TimeCare/'
   
 })
 

@@ -5,7 +5,7 @@
         <span class="text-2xl text-gray-700"><i class="fa fa-clock md:inline hidden"></i></span>
         <template v-for="(time, index) in times" :key="index">
           <div class="">
-            <span class="text-2xl" :class="{ 'text-4xl': index == 0 }">
+            <span class="" :class="{ 'text-3xl md:text-4xl': index == 0, 'text-xl md:text-2xl' : index !== 0 }">
               {{ time.time }}
             </span>
             <span v-if="index !== 0 && index !== 3" class="mx-1">:</span>

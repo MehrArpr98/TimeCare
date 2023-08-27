@@ -4,18 +4,20 @@
     class="z-50 bg-gray-200"
     style="background: linear-gradient(rgb(228 232 225) 0%, rgb(255, 255, 255))"
   >
-    <nav class="container mx-auto py-2 px-4">
+    <!-- <nav class="container mx-auto py-2 px-4"> -->
+      <nav class="py-2 px-4">
       <div class="w-full">
         <div class="flex justify-between w-full items-center">
           <div class="flex w-full">
             <div>
               <!-- Website Logo -->
               <router-link
-                class="text-black text-l text-xl md:text-3xl mr-8 font-medium ease-in duration-300 font-mono"
+                class="text-black text-l text-xl md:text-3xl mr-8 flex font-medium ease-in duration-300 font-mono"
                 exact-active-class="no-active"
                 :to="{ name: 'home' }"
               >
-                <span>Kaaraat</span>
+             <!--  <img src="../../public/logo.png" class="h-10 mr-1"/> -->
+              <img src="../../public/timecare.png" class="h-14 mr-1"/>
               </router-link>
             </div>
 
@@ -27,8 +29,8 @@
                   <router-link class="px-2 mx-2 " :to="{ name: 'home' }"
                       >Home</router-link
                     >
-                  <router-link class="px-2 mx-2 " :to="{ name: 'about' }"
-                    >About</router-link
+                  <router-link class="px-2 mx-2 " :to="{ name: 'users' }"
+                    >Users</router-link
                   >
                   <template v-if="userStore.userLoggedIn">
                     <!-- <router-link class="px-2 mx-2 " :to="{ name: 'home' }"
@@ -92,7 +94,7 @@
       <div class="bg-white border md:hidden mobile-menu z-50 mt-2" :class="hiddenClass">
         <ul class=" ">
           <li>
-            <router-link class="block text-sm px-2 py-2" :to="{ name: 'about' }">About</router-link>
+            <router-link class="block text-sm px-2 py-2" :to="{ name: 'users' }">Users</router-link>
           </li>
         </ul>
       </div>
