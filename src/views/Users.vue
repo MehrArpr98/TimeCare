@@ -11,7 +11,7 @@
           <div
             class="rounded-lg bg-center bg-cover bg-no-repeat relative h-4/6"
             :style="{
-              backgroundImage: `url(../../public/assets/user${(index % 8) + 1}.png)`
+              backgroundImage: `url(assets/user${(index % 8) + 1}.png)`
             }"
           >
             <div
@@ -72,7 +72,7 @@ export default {
       return acc
     }, {})
 
-    Object.keys(tasks).forEach(async(key) => {
+    Object.keys(tasks).forEach(async (key) => {
       let all = tasks[key].length
       let succeed = 0
       let failed = 0
