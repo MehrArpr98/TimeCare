@@ -94,6 +94,9 @@
       <div class="bg-white border md:hidden mobile-menu z-50 mt-2" :class="hiddenClass">
         <ul class=" ">
           <li>
+            <router-link class="block text-sm px-2 py-2" :to="{ name: 'home' }">Home</router-link>
+          </li>
+          <li>
             <router-link class="block text-sm px-2 py-2" :to="{ name: 'users' }">Users</router-link>
           </li>
         </ul>
