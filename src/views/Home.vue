@@ -57,7 +57,7 @@
         }"
         v-for="(task, index) in filteredTasks"
         :key="task.taskID"
-        class="flex items-center justify-center border rounded-lg relative z-10"
+        class="flex items-center justify-center border rounded-lg relative z-10 "
       >
         <Task
           :index="index"
