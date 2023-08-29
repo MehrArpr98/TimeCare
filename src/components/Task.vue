@@ -2,7 +2,7 @@
   <!-- Task situation button -->
   <button
     @click.prevent="doneTask"
-    class="absolute top-8 right-2 w-8 h-8 shadow-md shadow-gray-700 rounded-full text-center text-clack ease-all duration-700"
+    class="absolute top-16 right-2 w-8 h-8 shadow-md shadow-gray-700 rounded-full text-center text-clack ease-all duration-700"
     :class="{ 'bg-red-700': dead && !done, 'bg-white': !dead }"
     :disabled="done"
   >
@@ -34,13 +34,22 @@
     </div>
   </button>
 
+  <!-- Edit Task button -->
+  <button
+    @click="openEditModal(task.taskID)"
+    class="absolute top-6 right-2 w-8 h-8 text-lg hover:text-2xl  border border-1 border-gray-300 shadow-md shadow-gray-700 rounded-full text-center text-clack bg-white ease-all duration-300 hover:block"
+  >
+    <i class="fa fa-pencil"></i>
+  </button>
+
   <!-- Remove Task button -->
   <button
     @click="removeTask"
-    class="absolute -top-2 right-2 w-8 h-8 text-lg hover:text-2xl z-40 border border-1 border-gray-300 shadow-md shadow-gray-700 rounded-full text-center text-clack bg-white ease-all duration-300 hover:block"
+    class="absolute -top-4 right-2 w-8 h-8 text-lg hover:text-2xl z-40 border border-1 border-gray-300 shadow-md shadow-gray-700 rounded-full text-center text-clack bg-white ease-all duration-300 hover:block"
   >
     <i class="fa fa-trash"></i>
   </button>
+
 
   <!-- Dead task transparent gray page -->
   <div
@@ -67,6 +76,10 @@
     </div>
     <Countdown :endDate="task.date" @dead="setDead" v-if="!task.dead" />
     <!--   *** {{ task.text.length }}** -->
+
+
+  
+
   </div>
 </template>
 
@@ -76,11 +89,12 @@ import { tasksCollection } from '@/includes/firebase'
 
 export default {
   components: { Countdown },
-  props: ['index', 'task', 'sorted', 'hideDead', 'removeFromTasks', 'setDeadTasks', 'setDoneTasks'],
+  props: ['index', 'task', 'sorted', 'hideDead', 'removeFromTasks', 'setDeadTasks', 'setDoneTasks','openEditModal'],
   data() {
     return {
       dead: this.task.dead,
-      done: this.task.done
+      done: this.task.done,
+      
     }
   },
   methods: {
@@ -108,6 +122,7 @@ export default {
         }
       })
     },
+    
     doneTask() {
       this.$swal({
         title: 'Are you sure done this task?',
