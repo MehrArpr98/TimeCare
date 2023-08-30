@@ -1,11 +1,6 @@
 <template>
-  <header
-    id="header"
-    class="z-50 bg-gray-200"
-    style="background: linear-gradient(rgb(228 232 225) 0%, rgb(255, 255, 255))"
-  >
-    <!-- <nav class="container mx-auto py-2 px-4"> -->
-      <nav class="py-2 px-4">
+  <header id="header" class="z-50 bg-gray-200">
+    <nav class="py-2 px-4">
       <div class="w-full">
         <div class="flex justify-between w-full items-center">
           <div class="flex w-full">
@@ -16,41 +11,32 @@
                 exact-active-class="no-active"
                 :to="{ name: 'home' }"
               >
-             <!--  <img src="../../public/logo.png" class="h-10 mr-1"/> -->
-              <img src="../../public/timecare.png" class="h-14 mr-1"/>
+                <img src="../../public/timecare.png" class="h-14 mr-1" />
               </router-link>
             </div>
 
             <div class="flex-grow items-center md:flex w-full">
               <!-- Primary Navigation -->
-              <div class="flex flex-row justify-end md:justify-between items-center mt-1 text-zinc-400 w-full">
+              <div
+                class="flex flex-row justify-end md:justify-between items-center mt-1 text-zinc-400 w-full"
+              >
                 <!-- Navigation Links -->
                 <div class="hidden md:inline">
-                  <router-link class="px-2 mx-2 " :to="{ name: 'home' }"
-                      >Home</router-link
-                    >
-                  <router-link class="px-2 mx-2 " :to="{ name: 'users' }"
-                    >Users</router-link
-                  >
-                  <template v-if="userStore.userLoggedIn">
-                    <!-- <router-link class="px-2 mx-2 " :to="{ name: 'home' }"
-                      >Home</router-link
-                    > -->
-                  </template>
+                  <router-link class="px-2 mx-2" :to="{ name: 'home' }">Home</router-link>
+                  <router-link class="px-2 mx-2" :to="{ name: 'users' }">Users</router-link>
                 </div>
                 <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center mr-9">
+                <div class="md:hidden flex items-center mr-9 mt-4">
                   <button class="outline-none mobile-menu-button" @click="toggleMenu">
                     <i
                       class="fa w-6 h-6 text-gray-500 text-3xl"
-                      :class="[isOpenMenu ? 'fa-times' : 'fa-bars']"
+                      :class="[isOpenMobileMenu ? 'fa-times' : 'fa-bars']"
                     ></i>
                   </button>
                 </div>
                 <div v-if="!userStore.userLoggedIn">
-                  <a
-                    class="md:pr-3 pr-0 border-0 py-1.5 pl-7 border-gray-500 md:border-r md:border-t md:border-b rounded text-sm font-light ease-all duration-300 relative text-neutral-600 hover:text-neutral-800 hover:border-neutral-700"
-                    href="#"
+                  <div
+                    class="md:pr-3 pr-0 border-0 py-1.5 pl-7 border-gray-500 md:border-r md:border-t md:border-b rounded text-sm font-light ease-all duration-300 cursor-pointer relative text-neutral-600 hover:text-neutral-800 hover:border-neutral-700"
                     @click.prevent="toggleAuthModal"
                   >
                     <span class="absolute -top-1 -left-3">
@@ -59,13 +45,12 @@
                       ></i>
                       <i class="fa fa-user-circle mr-1 text-4xl"></i> </span
                     ><span class="hidden md:inline">Login | Register</span>
-                  </a>
+                  </div>
                 </div>
 
                 <div v-else>
-                  <a
-                    class="md:pr-3 pr-0 border-0 py-1.5 pl-7 border-gray-500 md:border-r md:border-t md:border-b rounded text-sm font-light ease-all duration-300 relative text-neutral-600 hover:text-neutral-800 hover:border-neutral-700"
-                    href="#"
+                  <div
+                    class="md:pr-3 pr-0 border-0 py-1.5 pl-7 border-gray-500 md:border-r md:border-t md:border-b rounded text-sm font-light ease-all duration-300 cursor-pointer relative text-neutral-600 hover:text-neutral-800 hover:border-neutral-700"
                     @click.prevent="signOut"
                   >
                     <span class="absolute -top-1 -left-3">
@@ -74,24 +59,18 @@
                       ></i>
                       <i class="fa fa-user-circle mr-1 text-4xl"></i> </span
                     ><span class="hidden md:inline">Logout</span>
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Mobile menu button -->
-          <!--  <div class="md:hidden flex items-center">
-            <button class="outline-none mobile-menu-button" @click="toggleMenu">
-              <i class="fa w-6 h-6 text-gray-500" 
-                :class="[isOpenMenu? 'fa-times' : 'fa-bars']"></i>              
-            </button>
-          </div>
- -->
         </div>
       </div>
       <!-- mobile menu -->
-      <div class="bg-white border md:hidden mobile-menu z-50 mt-2" :class="hiddenClass">
+      <div
+        class="bg-white border md:hidden mobile-menu z-50 mt-2"
+        :class="{ hidden: !isOpenMobileMenu }"
+      >
         <ul class=" ">
           <li>
             <router-link class="block text-sm px-2 py-2" :to="{ name: 'home' }">Home</router-link>
@@ -105,32 +84,27 @@
   </header>
 </template>
 <script>
-import { mapStores, mapState } from 'pinia'
+import { mapStores } from 'pinia'
 import useAuthModalStore from '@/stores/authModal'
 import useUserStore from '@/stores/user'
-import useMobileStore from '@/stores/mobile'
-//import helper from '@/includes/helper'
 
 export default {
   name: 'AppHeader',
   data() {
     return {
-      logoAddress: ''
+      logoAddress: '',
+      isOpenMobileMenu: false
     }
   },
   computed: {
-    ...mapStores(useAuthModalStore, useUserStore, useMobileStore),
-    ...mapState(useMobileStore, ['hiddenClass', 'isOpenMenu'])
-  },
-  async created() {
-    // this.logoAddress = await helper.getStaticImage('logo.png')
+    ...mapStores(useAuthModalStore, useUserStore)
   },
   methods: {
     toggleAuthModal() {
       this.authModalStore.isOpen = !this.authModalStore.isOpen
     },
     toggleMenu() {
-      this.mobileStore.isOpenMenu = !this.mobileStore.isOpenMenu
+      this.isOpenMobileMenu = !this.isOpenMobileMenu
     },
     signOut() {
       this.userStore.signOut()

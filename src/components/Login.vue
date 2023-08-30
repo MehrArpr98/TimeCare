@@ -67,8 +67,8 @@
 
       <div class="text-center text-zinc-500 mt-5">
         Don't have an account yet?
-        <a class="hover:text-emerald-700 text-emerald-600 border-b" href="#" @click.prevent="updateTab"
-          >Create Account</a
+        <div class="hover:text-emerald-700 cursor-pointer inline text-emerald-600 border-b" @click.prevent="updateTab"
+          >Create Account</div
         >
       </div>
     </vee-form>
@@ -122,16 +122,3 @@ export default {
 }
 </script>
 
-<style>
-.input-wrp .floating-label {
-  pointer-events: none;
-  top: 24px;
-  opacity: 0;
-}
-
-.input-wrp input:not(:placeholder-shown) ~ .floating-label {
-  top: 5px;
-  font-size: 13px;
-  opacity: 1;
-}
-</style>

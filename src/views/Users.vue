@@ -7,7 +7,7 @@
         class="flex items-center justify-center rounded-lg relative z-10"
       >
         <!--  {{ user }} -->
-        <div class="rounded-lg bg-white h-full w-full relative z-10" style="min-height: 300px">
+        <div class="user-card rounded-lg bg-white h-full w-full relative z-10">
           <div
             class="rounded-lg bg-center bg-cover bg-no-repeat relative h-4/6"
             :style="{
@@ -93,3 +93,4 @@ export default {
   }
 }
 </script>
+

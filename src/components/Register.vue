@@ -96,8 +96,8 @@
 
       <div class="text-center text-zinc-500 mt-5">
         Do yo have an account?
-        <a class="hover:text-teal-700 text-teal-600 border-b" href="#" @click.prevent="updateTab"
-          >Log in</a
+        <div class="hover:text-teal-700 text-teal-600 border-b cursor-pointer inline" @click.prevent="updateTab"
+          >Log in</div
         >
       </div>
     </vee-form>

@@ -224,7 +224,7 @@ export default {
 
       this.editTask_in_submission = false
 
-      this.$swal('Task Added!', '', 'success').then((result) => {
+      this.$swal('Task Editted!', '', 'success').then((result) => {
         if (result.isConfirmed) {
           window.location.reload()
         }
@@ -282,24 +282,4 @@ export default {
 }
 </script>
 
-<style>
-.grid-container {
-  grid-auto-rows: 50px;
-}
 
-.short {
-  grid-row: span 3;
-}
-
-.tall {
-  grid-row: span 4;
-}
-
-.taller {
-  grid-row: span 5;
-}
-
-.tallest {
-  grid-row: span 6;
-}
-</style>

@@ -4,8 +4,8 @@ export default defineStore('authModal', {
   state: () => ({
     isOpen: false
   }),
-  getters:{
-    hiddenClass(){
+  getters: {
+    hiddenClass() {
       return this.isOpen ? '' : 'hidden'
     }
   }

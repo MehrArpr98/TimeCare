@@ -24,7 +24,7 @@
       >
         <div class="p-2 px-4">
           <div
-            class="modal-close text-sm text-gray-500 text-right cursor-pointer z-50 float-right"
+            class="modal-close text-lg text-gray-500 text-right cursor-pointer z-50 float-right"
             @click="closeModal"
           >
             <i class="fas fa-times"></i>
@@ -163,16 +163,3 @@ export default {
 }
 </script>
 
-<style>
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scrollbar::-webkit-scrollbar-track {
-  display: none;
-}
-
-.no-scrollbar::-webkit-scrollbar-thumb {
-  display: none;
-}
-</style>

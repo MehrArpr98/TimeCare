@@ -17,10 +17,10 @@
         <div class="py-2 text-left px-2">
           <!--Title-->
           <div
-            class="modal-close text-sm text-gray-500 text-right cursor-pointer z-50"
-            @click="modalVisibility = false"
+            class="modal-close text-lg text-gray-500 text-right z-50"
+            
           >
-            <i class="fas fa-times"></i>
+            <i class="fas fa-times cursor-pointer pr-1" @click="modalVisibility = false"></i>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
