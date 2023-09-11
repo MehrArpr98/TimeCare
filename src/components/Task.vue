@@ -1,6 +1,6 @@
 <template>
   <!-- Task situation button -->
-  <button
+  <button role="button" aria-label="situation-button"
     @click.prevent="doneTask"
     class="absolute top-16 right-2 w-8 h-8 shadow-md shadow-gray-700 rounded-full text-center text-clack ease-all duration-700"
     :class="{ 'bg-red-700': dead && !done, 'bg-white': !dead }"
@@ -10,8 +10,8 @@
 
     <div v-else class="checkbox-wrapper-12 w-8 h-8">
       <div class="cbx w-8 h-8">
-        <input id="cbx-12" type="checkbox" class="absolute top-0 left-0 w-8 h-8" v-model="done" />
-        <label for="cbx-12" class="w-8 h-8"></label>
+        <input :id="'cbx-12'+index" type="checkbox" class="absolute top-0 left-0 w-8 h-8" v-model="done" />
+        <label :for="'cbx-12'+index" class="w-8 h-8"></label>
         <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
           <path d="M2 8.36364L6.23077 12L13 2"></path>
         </svg>
@@ -35,7 +35,7 @@
   </button>
 
   <!-- Edit Task button -->
-  <button
+  <button role="button" aria-label="edit-task"
     @click="openEditModal(task.taskID)"
     class="absolute top-6 right-2 w-8 h-8 text-lg hover:text-2xl  border border-1 border-gray-300 shadow-md shadow-gray-700 rounded-full text-center text-clack bg-white ease-all duration-300 hover:block"
   >
@@ -43,7 +43,7 @@
   </button>
 
   <!-- Remove Task button -->
-  <button
+  <button role="button" aria-label="remove-task"
     @click="removeTask"
     class="absolute -top-4 right-2 w-8 h-8 text-lg hover:text-2xl z-40 border border-1 border-gray-300 shadow-md shadow-gray-700 rounded-full text-center text-clack bg-white ease-all duration-300 hover:block"
   >

@@ -1,7 +1,7 @@
 <template>
   <main v-if="userLoggedIn" class="container mx-auto px-4 my-5 py-5 mx-auto max-w-6xl">
     <!-- Add new task button -->
-    <button
+    <button role="button" aria-label="add-task"
       class="fixed bottom-2 right-2 block z-40 font-2xl text-white border-4 border-white rounded-full bg-emerald-500 w-16 h-16 hover:bg-emerald-600 hover:w-20 hover:h-20 ease-all duration-300"
       @click="showAddModal = true"
     >
@@ -21,7 +21,7 @@
         />
       </div>
       <div class="flex">
-        <button
+        <button role="button" aria-label="hide-task"
           class="block mx-2 font-2xl h-10 z-40 rounded-full px-3 bg-gray-500 hover:bg-gray-600 text-white ease-all duration-300 flex items-center"
           @click="hideDead = !hideDead"
         >
@@ -29,8 +29,8 @@
           <i class="fas fa-broom md:hidden inline"></i>
           <span class="hidden md:inline">Hide dead tasks</span>
         </button>
-        <button
-          class="block font-2xl h-10 z-40 rounded-full px-3 bg-pink-500 hover:bg-pink-600 text-white ease-all duration-300 flex items-center"
+        <button role="button" aria-label="sort-task"
+          class="block font-2xl h-10 z-40 rounded-full px-3 bg-pink-600 hover:bg-pink-700 text-white ease-all duration-300 flex items-center"
           @click="sorted = !sorted"
         >
           <i class="fa fa-times pr-1" v-if="sorted"></i>

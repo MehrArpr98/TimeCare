@@ -8,10 +8,9 @@
               <!-- Website Logo -->
               <router-link
                 class="text-black text-l text-xl md:text-3xl mr-8 flex font-medium ease-in duration-300 font-mono"
-                exact-active-class="no-active"
                 :to="{ name: 'home' }"
               >
-                <img src="../../public/timecare.png" class="h-14 mr-1" />
+                <img src="../../public/timecare.png" alt="logo image" class="h-14 mr-1" />
               </router-link>
             </div>
 
